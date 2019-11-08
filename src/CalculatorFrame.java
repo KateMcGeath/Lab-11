@@ -1,3 +1,4 @@
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -140,6 +141,7 @@ public class CalculatorFrame extends JFrame
         panel3.add(errorMessage); 
         
         //add the operations to the lower panel
+        panel4.setLayout(new FlowLayout());
         panel4.add(add);
         panel4.add(multiply);
         panel4.add(exponentiate);
@@ -154,10 +156,11 @@ public class CalculatorFrame extends JFrame
         //add the panels into the frame
         // Remember that this class is a JFrame, so you should simply call
         // the add method of this object that is being constructed.
-        panel0.add(this);
-        panel1.add(this);
-        panel2.add(this);
-        panel3.add(this);
+        getContentPane().add(panel0);
+        getContentPane().add(panel1);
+        getContentPane().add(panel2);
+        getContentPane().add(panel3);
+        getContentPane().add(panel4);
 
         //default to and operator
         add.setSelected(true);
@@ -270,31 +273,29 @@ public class CalculatorFrame extends JFrame
                      * Finally, perform the operation on the integers and write out the result as
                      * a String to the computeResult text field.
                      */
-            		//Retrieving which button was called.
-            		JRadioButton sourceEvent = (JRadioButton) e.getSource();
             		
-            		if(sourceEvent == add) {
+            		if(add.isSelected()) {
             			int value1 = Integer.parseInt(firstBox.getText());
             			int value2 = Integer.parseInt(secondBox.getText());
             			String result = String.valueOf(value1 + value2);
             			computeResult.setText(result);
             		}
             		
-            		else if(sourceEvent == multiply) {
+            		else if(multiply.isSelected()) {
             			int value1 = Integer.parseInt(firstBox.getText());
             			int value2 = Integer.parseInt(secondBox.getText());
             			String result = String.valueOf(value1 * value2);
             			computeResult.setText(result);
             		}
             		
-            		else if(sourceEvent == exponentiate) {
+            		else if(exponentiate.isSelected()) {
             			int value1 = Integer.parseInt(firstBox.getText());
             			int value2 = Integer.parseInt(secondBox.getText());
             			String result = String.valueOf(Math.pow(value1, value2));
             			computeResult.setText(result);
             		}
             		
-            		else if(sourceEvent == modulus) {
+            		else if(modulus.isSelected()) {
             			int value1 = Integer.parseInt(firstBox.getText());
             			int value2 = Integer.parseInt(secondBox.getText());
             			String result = String.valueOf(value1 % value2);
@@ -308,9 +309,11 @@ public class CalculatorFrame extends JFrame
                 // (1) A number entered is not an integer -> NumberFormatException
                 // (2) Divide by zero -> ArithmeticException
                 catch (NumberFormatException error) {
-                	// TODO: display the error message "ERROR: Please enter a valid integer."
+                	//display the error message "ERROR: Please enter a valid integer."
                     // in the error message text field.
-                	// TODO: Clear computeResult
+                	//Clear computeResult
+                	errorMessage.setText("ERROR: Please enter a valid integer.");
+                	computeResult.setText("");
                 }
                 catch (ArithmeticException error) {
                 	// TODO: display the error message "ERROR: Tried to divide by 0."
