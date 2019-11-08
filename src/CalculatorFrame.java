@@ -191,7 +191,10 @@ public class CalculatorFrame extends JFrame
         
         multiply.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	// TODO: change the opSign, clear the error message and compute result.
+            	//change the opSign, clear the error message and compute result.
+            	opSign.setText("*");
+            	computeResult.setText("");
+            	errorMessage.setText("");
             }
         });
         
