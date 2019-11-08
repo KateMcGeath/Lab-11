@@ -230,7 +230,10 @@ public class CalculatorFrame extends JFrame
          */
         slider.addChangeListener(new ChangeListener() {
         	public void stateChanged(ChangeEvent e) {
-        		// TODO: change the text in the first JTextField. Clear error and result
+        		//change the text in the first JTextField. Clear error and result
+        		firstBox.setText(String.valueOf(slider.getValue()));
+        		computeResult.setText("");
+            	errorMessage.setText("");
             }
         });
 
@@ -267,6 +270,36 @@ public class CalculatorFrame extends JFrame
                      * Finally, perform the operation on the integers and write out the result as
                      * a String to the computeResult text field.
                      */
+            		//Retrieving which button was called.
+            		JRadioButton sourceEvent = (JRadioButton) e.getSource();
+            		
+            		if(sourceEvent == add) {
+            			int value1 = Integer.parseInt(firstBox.getText());
+            			int value2 = Integer.parseInt(secondBox.getText());
+            			String result = String.valueOf(value1 + value2);
+            			computeResult.setText(result);
+            		}
+            		
+            		else if(sourceEvent == multiply) {
+            			int value1 = Integer.parseInt(firstBox.getText());
+            			int value2 = Integer.parseInt(secondBox.getText());
+            			String result = String.valueOf(value1 * value2);
+            			computeResult.setText(result);
+            		}
+            		
+            		else if(sourceEvent == exponentiate) {
+            			int value1 = Integer.parseInt(firstBox.getText());
+            			int value2 = Integer.parseInt(secondBox.getText());
+            			String result = String.valueOf(Math.pow(value1, value2));
+            			computeResult.setText(result);
+            		}
+            		
+            		else if(sourceEvent == modulus) {
+            			int value1 = Integer.parseInt(firstBox.getText());
+            			int value2 = Integer.parseInt(secondBox.getText());
+            			String result = String.valueOf(value1 % value2);
+            			computeResult.setText(result);
+            		}
                     
                     // Clear the error message text field:
                     errorMessage.setText("");
