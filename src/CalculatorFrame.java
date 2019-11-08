@@ -139,9 +139,17 @@ public class CalculatorFrame extends JFrame
         panel2.add(button);
         panel3.add(errorMessage); 
         
-        //TODO: add the operations to the lower panel
+        //add the operations to the lower panel
+        panel4.add(add);
+        panel4.add(multiply);
+        panel4.add(exponentiate);
+        panel4.add(modulus);
 
         //add the operation radio buttons to the button group
+        ops.add(add);
+        ops.add(multiply);
+        ops.add(exponentiate);
+        ops.add(modulus);
         
         // TODO: add the panels into the frame
         // Remember that this class is a JFrame, so you should simply call
