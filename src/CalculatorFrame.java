@@ -198,7 +198,25 @@ public class CalculatorFrame extends JFrame
             }
         });
         
-        // TODO: implement the actionlisteners for the divide and equality buttons the same way:
+     //implement the actionlisteners for the exponentiate and modulus buttons the same way:
+        exponentiate.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	//change the opSign, clear the error message and compute result.
+            	opSign.setText("^");
+            	computeResult.setText("");
+            	errorMessage.setText("");
+            } 
+        });
+        
+        modulus.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	//change the opSign, clear the error message and compute result.
+            	opSign.setText("%");
+            	computeResult.setText("");
+            	errorMessage.setText("");
+            } 
+        });
+        
         
         /*
          * Set the Change Listener for the Slider. When a change
