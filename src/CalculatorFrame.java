@@ -151,9 +151,13 @@ public class CalculatorFrame extends JFrame
         ops.add(exponentiate);
         ops.add(modulus);
         
-        // TODO: add the panels into the frame
+        //add the panels into the frame
         // Remember that this class is a JFrame, so you should simply call
         // the add method of this object that is being constructed.
+        panel0.add(this);
+        panel1.add(this);
+        panel2.add(this);
+        panel3.add(this);
 
         //default to and operator
         add.setSelected(true);
@@ -178,7 +182,10 @@ public class CalculatorFrame extends JFrame
          */
         add.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	// TODO: change the opSign, clear the error message and compute result.
+            	//change the opSign, clear the error message and compute result.
+            	opSign.setText("+");
+            	computeResult.setText("");
+            	errorMessage.setText("");
             } 
         });
         
